@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.send("benoit-movie-tracker-api test");
+    res.send("benoit-movie-tracker-api");
 });
 
 app.get('/shows', db.getAllShows);
