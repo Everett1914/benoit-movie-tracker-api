@@ -18,6 +18,19 @@ const getAllShows = async (request, response) => {
     })
 };
 
+const addShow = async (request, response) => {
+
+  const { name, genre, source, cost, type } = (request.body);
+
+  pool.query('INSERT INTO shows (name, genre, source, cost, type) VALUES ($1, $2, $3, $4, $5)', [name, genre, source, cost, type], (error, results) => {
+    if (error) { 
+      throw error
+    }
+    response.status(201).send('A new show was added to the db');
+  })
+};
+
 module.exports = {
-    getAllShows
+    getAllShows,
+    addShow
 };
