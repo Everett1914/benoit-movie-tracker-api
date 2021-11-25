@@ -5,6 +5,7 @@ const app = express();
 const db = require('./api')
 let port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
