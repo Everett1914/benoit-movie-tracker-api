@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 
 app.get('/shows', db.getAllShows);
 app.post('/addShow', db.addShow);
+app.delete('/deleteShow', db.deleteShow);
 
 app.listen(port, () => {
     console.log(`App is listening on port http://localhost:${port}`);

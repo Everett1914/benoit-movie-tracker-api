@@ -30,7 +30,20 @@ const addShow = async (request, response) => {
   })
 };
 
+const deleteShow = async (request, response) => {
+
+  const show_id = parseInt(request.params.show_id)
+
+  pool.query('DELETE FROM shows WHERE show_id = $1', [show_id], (error, results) => {
+    if (error) { 
+      throw error
+    }
+    response.status(200).send(`Show with id ${show_id} was deleted`);
+  })
+};
+
 module.exports = {
     getAllShows,
-    addShow
+    addShow,
+    deleteShow
 };
