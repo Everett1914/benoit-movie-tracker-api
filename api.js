@@ -42,8 +42,24 @@ const deleteShow = async (request, response) => {
   })
 };
 
+const updateShow = async (request, response) => {
+
+  const show_id = parseInt(request.params.show_id)
+  const { name, genre, source, cost, type } = request.body
+
+  pool.query('UPDATE shows SET name = $1, genre = $2, source = $3, cost = $4, type = $5 WHERE show_id = $6', 
+  [name, genre, source, cost, type],
+   (error, results) => {
+    if (error) { 
+      throw error
+    }
+    response.status(200).send(`Show with id ${show_id} was updated`);
+  })
+};
+
 module.exports = {
     getAllShows,
     addShow,
-    deleteShow
+    deleteShow,
+    updateShow
 };
