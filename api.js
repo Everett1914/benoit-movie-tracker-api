@@ -48,7 +48,7 @@ const updateShow = async (request, response) => {
   const { name, genre, source, cost, type } = request.body
 
   pool.query('UPDATE shows SET name = $1, genre = $2, source = $3, cost = $4, type = $5 WHERE show_id = $6', 
-  [name, genre, source, cost, type],
+  [name, genre, source, cost, type, show_id],
    (error, results) => {
     if (error) { 
       throw error
